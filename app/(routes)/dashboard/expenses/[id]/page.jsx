@@ -2,7 +2,7 @@
 import { db } from '@/utils/dbConfig'
 import { Budgets, Expenses } from '@/utils/schema'
 import { useUser } from '@clerk/nextjs'
-import { eq, getTableColumns, sql } from 'drizzle-orm'
+import { desc, eq, getTableColumns, sql } from 'drizzle-orm'
 import React, { useEffect , use, useState} from 'react'
 import BudgetItem from '../../budgets/_components/BudgetItem'
 import AddExpense from '../_components/AddExpense'
@@ -26,6 +26,11 @@ function ExpensesScreen({params}) {
             .where(eq(Budgets.id,id))
             .groupBy(Budgets.id);
         setbudgetInfo(result[0]);
+        getExpenseList();
+    }
+    const getExpenseList=async()=>{
+        const result = await db.select().from(Expenses).where(eq(Expenses.budgetId,id)).orderBy(desc(Expenses.id));
+        console.log(result);    
     }
   return (
     <div className='p-10'>
