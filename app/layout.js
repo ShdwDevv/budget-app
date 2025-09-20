@@ -1,15 +1,12 @@
-import localFont from "next/font/local";
+import { Outfit } from "next/font/google";
 import "./globals.css";
+import { ClerkProvider } from "@clerk/nextjs";
+import { Toaster } from "@/components/ui/sonner";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+// Import Outfit font with desired weights (you can adjust the weights as needed)
+const outfit = Outfit({
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+  subsets: ['latin'],
 });
 
 export const metadata = {
@@ -19,12 +16,39 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body className={`${outfit.className} antialiased`}>
+          <Toaster />
+          {children}
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
+
+
+
+
+
+// import { Outfit } from "next/font/google";
+// import "./globals.css";
+// import { ClerkProvider, RedirectToSignIn } from "@clerk/nextjs";
+// const outfit = Outfit({
+//   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+//   subsets: ['latin'],
+// });
+// const clerkFrontendApi = process.env.NEXT_PUBLIC_CLERK_FRONTEND_API;
+// const clerkApiKey = process.env.CLERK_API_KEY; // Or use your environment variable
+
+// export default function RootLayout({ children }) {
+//   return (
+//     <ClerkProvider frontendApi={clerkFrontendApi} apiKey={clerkApiKey}>
+//       <html lang="en">
+//         <body className={`${outfit.className} antialiased`}>
+//           {children}
+//         </body>
+//       </html>
+//     </ClerkProvider>
+//   );
+// }
