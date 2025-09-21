@@ -21,6 +21,7 @@ function ExpensesScreen({params}) {
     const [budgetInfo,setbudgetInfo]=useState();
     const [expensesList,setExpensesList]=useState();
     const route=useRouter();
+    
     useEffect(() => {
         user&&getBudgetInfo();
     },[user]);
@@ -55,7 +56,25 @@ function ExpensesScreen({params}) {
   return (
     <div className='p-10'>
         <h2 className='text-2xl font-bold flex justify-between'>
-            My Expenses
+            <div className='flex items-center justify-center'>
+                <button onClick={() => route.back()}>
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="w-6 h-6"
+                >
+                    <path d="M7 18l-6-6 6-6" />
+                    <line x1="3" y1="12" x2="15" y2="12" />
+                </svg>
+                </button>
+                
+                My Expenses
+            </div>
             <div className='flex gap-2 items-center'>
                 {budgetInfo ? <EditBudget budgetInfo={budgetInfo} refreshData={()=>getBudgetInfo()} /> :
                     <div className='h-[150px] w-full bg-slate-200 rounded-lg animate-pulse'></div>
