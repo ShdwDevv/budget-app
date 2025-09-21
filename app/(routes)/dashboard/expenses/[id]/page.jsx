@@ -54,8 +54,8 @@ function ExpensesScreen({params}) {
     }
   return (
     <div className='p-10'>
-        <h2 className='text-2xl font-bold flex justify-between'>
-            <div className='flex items-center justify-center'>
+        <h2 className='text-2xl font-bold '>
+            <div className='flex items-center'>
                 <button onClick={() => route.back()}>
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -72,9 +72,9 @@ function ExpensesScreen({params}) {
                 </svg>
                 </button>
                 
-                <h2 className='font-bold text-3xl'>My Expenses</h2>
+                <h2 className='font-bold text-'>My Expenses</h2>
             </div>
-            <div className='flex gap-2 items-center'>
+            <div className='flex mt-4 gap-2 justify-end items-center'>
                 {budgetInfo ? <EditBudget budgetInfo={budgetInfo} refreshData={()=>getBudgetInfo()} /> :
                     <div className='h-[150px] w-full bg-slate-200 rounded-lg animate-pulse'></div>
                 }
