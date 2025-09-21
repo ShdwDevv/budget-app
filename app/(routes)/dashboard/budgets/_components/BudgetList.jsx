@@ -9,7 +9,6 @@ import BudgetItem from './BudgetItem'
 
 function BudgetList() {
   const [budgetList,setBudgetList] = useState([]);
-  console.log(budgetList);
   const {user}=useUser();
   useEffect(() => {
     user&&getBudgetList();
@@ -25,7 +24,6 @@ function BudgetList() {
     .groupBy(Budgets.id)
     .orderBy(desc(Budgets.id));
     setBudgetList(result);
-    console.log(result);
   }
   return (
     <div className='mt-7'>

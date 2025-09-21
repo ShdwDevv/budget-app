@@ -47,8 +47,7 @@ function ExpensesScreen({params}) {
     const deleteBudget=async()=>{
         const deleteExpenseResult=await db.delete(Expenses).where(eq(Expenses.budgetId,id)).returning();
         if(deleteExpenseResult){
-            const result = db.delete(Budgets).where(eq(Budgets.id,id)).returning();
-            console.log(result);
+            const result = await db.delete(Budgets).where(eq(Budgets.id,id)).returning();
         }
         toast('Budget Deleted!');
         route.replace('/dashboard/budgets');
