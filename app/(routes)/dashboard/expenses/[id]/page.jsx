@@ -72,7 +72,7 @@ function ExpensesScreen({params}) {
                 </svg>
                 </button>
                 
-                My Expenses
+                <h2 className='font-bold text-3xl'>My Expenses</h2>
             </div>
             <div className='flex gap-2 items-center'>
                 {budgetInfo ? <EditBudget budgetInfo={budgetInfo} refreshData={()=>getBudgetInfo()} /> :
