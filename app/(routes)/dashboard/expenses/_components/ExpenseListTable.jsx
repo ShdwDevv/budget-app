@@ -26,9 +26,9 @@ function ExpenseListTable({expensesList,refreshData}) {
             </div>
             {expensesList.map((expenses,index)=>(
                 <div key={expenses.id} className='grid grid-cols-4 bg-slate-100 p-2'>
-                <h2 className='text-center'>{expenses.name}</h2>
-                <h2 className='text-center'>{expenses.amount}</h2>
-                <h2 className='text-center'>{expenses.createdAt}</h2>
+                <h2 className="text-center break-words whitespace-normal max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg">{expenses.name}</h2>
+                <h2 className="text-center break-words whitespace-normal max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg">{expenses.amount}</h2>
+                <h2 className="text-center break-words whitespace-normal max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg">{expenses.createdAt}</h2>
                 <h2 className='flex justify-center'>
                 <AlertDialog>
                     <AlertDialogTrigger asChild>
