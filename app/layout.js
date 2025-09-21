@@ -31,24 +31,3 @@ export default function RootLayout({ children }) {
 
 
 
-// import { Outfit } from "next/font/google";
-// import "./globals.css";
-// import { ClerkProvider, RedirectToSignIn } from "@clerk/nextjs";
-// const outfit = Outfit({
-//   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
-//   subsets: ['latin'],
-// });
-// const clerkFrontendApi = process.env.NEXT_PUBLIC_CLERK_FRONTEND_API;
-// const clerkApiKey = process.env.CLERK_API_KEY; // Or use your environment variable
-
-// export default function RootLayout({ children }) {
-//   return (
-//     <ClerkProvider frontendApi={clerkFrontendApi} apiKey={clerkApiKey}>
-//       <html lang="en">
-//         <body className={`${outfit.className} antialiased`}>
-//           {children}
-//         </body>
-//       </html>
-//     </ClerkProvider>
-//   );
-// }

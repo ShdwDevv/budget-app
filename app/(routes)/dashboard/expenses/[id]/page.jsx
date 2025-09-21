@@ -109,7 +109,6 @@ function ExpensesScreen({params}) {
             <AddExpense budgetId={id} user={user} refreshData={()=>getBudgetInfo()}/>
         </div>
         <div className='mt-4'>
-            <h2 className='font-bold text-lg'>Latest Expenses</h2>
             {expensesList? <ExpenseListTable expensesList={expensesList} refreshData={()=>getBudgetInfo()} /> :
                 <div className='h-[150px] w-full bg-slate-200 rounded-lg animate-pulse'></div>
             }
