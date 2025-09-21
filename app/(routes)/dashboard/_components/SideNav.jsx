@@ -26,16 +26,10 @@ function SideNav() {
       icon:ReceiptText,
       path:'/dashboard/expenses'
     },
-    {
-      id:4,
-      name:'Upgrade',
-      icon:ShieldCheck,
-      path:'/dashboard/upgrade'
-    }
   ]
   return (
     <div className='h-screen p-5'>
-      <Image src={'./logo.svg'}
+      <Image src={'../logo.svg'} 
       alt='logo'
       width={100}
       height={0}

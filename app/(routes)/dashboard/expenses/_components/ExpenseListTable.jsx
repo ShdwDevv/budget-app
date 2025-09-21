@@ -4,6 +4,8 @@ import { Expenses } from '@/utils/schema'
 import { db } from '@/utils/dbConfig'
 import { eq } from 'drizzle-orm'
 import { toast } from 'sonner'
+import { AlertDialog,AlertDialogAction,AlertDialogCancel,AlertDialogContent,AlertDialogDescription,AlertDialogFooter,AlertDialogHeader,AlertDialogTitle,AlertDialogTrigger } from "@/components/ui/alert-dialog"
+
 function ExpenseListTable({expensesList,refreshData}) {
     const deleteExpense = async(expense) => {
         const result = await db.delete(Expenses).where(eq(Expenses.id,expense.id)).returning();
@@ -26,11 +28,30 @@ function ExpenseListTable({expensesList,refreshData}) {
                 <h2>{expenses.name}</h2>
                 <h2>{expenses.amount}</h2>
                 <h2>{expenses.createdAt}</h2>
-                <h2><Trash onClick={()=>deleteExpense(expenses)} className='text-red-600 cursor-pointer'/></h2> 
+                <h2>
+                <AlertDialog>
+                    <AlertDialogTrigger asChild>
+                        <Trash className='text-red-600 cursor-pointer ml-3'/>
+                    </AlertDialogTrigger>
+                    <AlertDialogContent>
+                        <AlertDialogHeader>
+                        <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                        <AlertDialogDescription>
+                            This action cannot be undone. This will permanently delete your current expense
+                            and remove your data from our servers.
+                        </AlertDialogDescription>
+                        </AlertDialogHeader>
+                        <AlertDialogFooter>
+                        <AlertDialogCancel>Cancel</AlertDialogCancel>
+                        <AlertDialogAction onClick={()=>deleteExpense(expenses)}>Continue</AlertDialogAction>
+                        </AlertDialogFooter>
+                    </AlertDialogContent>
+                </AlertDialog>
+                </h2> 
             </div>
             ))}
         </div>
     )
-    }
+}
 
 export default ExpenseListTable
